@@ -23,6 +23,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(express.static("public"));
+app.use(express.static("models"));
 
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
@@ -34,9 +35,25 @@ app.get("/", function(req, res){
     res.render("home");
 });
 
+app.get("/sirGeorge", function(req, res){
+    res.render("sirGeorge");
+});
+app.get("/hassett", function(req, res){
+    res.render("hassett");
+});
+app.get("/hollis", function(req, res){
+    res.render("hollis");
+});
+
+app.get("/apply", function(req, res){
+    res.render("apply");
+});
+
 app.get("/secret", isLoggedIn, function(req, res){
     res.render("secret");
 });
+
+
 
 app.get("/register", function(req, res){
     res.render("register");
@@ -75,6 +92,7 @@ function isLoggedIn(req, res, next){
     }
     res.redirect("/login");
 }
+
 
 app.listen(3000, function(){
     console.log("Auth Server is now Active...");
