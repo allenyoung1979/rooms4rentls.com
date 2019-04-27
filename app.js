@@ -75,8 +75,8 @@ function isLoggedIn(req, res, next){
     }
     res.redirect("/login");
 }
+const port = process.env.PORT || 300;
+app.listen(port, () => console.log('Server is at your command'));
 
-app.listen(3000, function(){
-    console.log("Auth Server is now Active...");
 });
 
